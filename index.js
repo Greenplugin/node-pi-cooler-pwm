@@ -1,7 +1,7 @@
 /**
  * Created by dobro on 09.05.17.
  */
-let wPi = require('wiring-op');
+let wPi = require('wiring-pi');
 
 wPi.setup('wpi');
 
