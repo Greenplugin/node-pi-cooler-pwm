@@ -14,7 +14,12 @@ wPi.digitalWrite(9, 0);
 value = 0;
 
 setInterval(function() {
-    console.log(fs.readFileSync('/sys/devices/virtual/thermal/thermal_zone0/temp'));
+    fs.readFile('/sys/devices/virtual/thermal/thermal_zone0/temp', 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(data);
+    });
     //wPi.digitalWrite(8, value);
     value = +!value;
 }, 500);
