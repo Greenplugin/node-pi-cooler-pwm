@@ -1,2 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/*
+Would skip repository node_modules/wiring-pi/wiringpi
+node_modules/*
