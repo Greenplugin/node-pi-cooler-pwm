@@ -20,7 +20,20 @@ setInterval(function() {
         }
         let temp = Number(data);
         console.log(temp);
+
+
+
+        if(temp < 55){
+            wPi.digitalWrite(9, 1);
+            wPi.digitalWrite(8, 1);
+        } else if(temp >= 55 && temp < 65){
+            wPi.digitalWrite(9, 0);
+            wPi.digitalWrite(8, 1);
+        } else {
+            wPi.digitalWrite(9, 0);
+            wPi.digitalWrite(8, 0);
+        }
+
     });
-    //wPi.digitalWrite(8, value);
-    value = +!value;
-}, 500);
+
+}, 1000);
