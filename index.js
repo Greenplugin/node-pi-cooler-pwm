@@ -14,5 +14,5 @@ value = 0;
 
 setInterval(function() {
     wPi.digitalWrite(8, value);
-    value = !value;
+    value = +!value;
 }, 500);
