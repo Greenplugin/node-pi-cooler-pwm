@@ -18,7 +18,8 @@ setInterval(function() {
         if (err) {
             return console.log(err);
         }
-        console.log(data);
+        let temp = Number(data);
+        console.log(temp);
     });
     //wPi.digitalWrite(8, value);
     value = +!value;
