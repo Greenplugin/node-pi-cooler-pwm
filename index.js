@@ -23,13 +23,13 @@ setInterval(function() {
 
 
 
-        if(temp < 55){
+        if(temp < 50){
             wPi.digitalWrite(9, 1);
             wPi.digitalWrite(8, 1);
         } else if(temp >= 60 && temp < 70){
             wPi.digitalWrite(9, 0);
             wPi.digitalWrite(8, 1);
-        } else {
+        } else if(temp >= 75 ){
             wPi.digitalWrite(9, 0);
             wPi.digitalWrite(8, 0);
         }
