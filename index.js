@@ -2,6 +2,7 @@
  * Created by dobro on 09.05.17.
  */
 let wPi = require('wiring-op');
+let fs = require('fs');
 
 wPi.setup('wpi');
 
@@ -13,6 +14,7 @@ wPi.digitalWrite(9, 0);
 value = 0;
 
 setInterval(function() {
-    wPi.digitalWrite(8, value);
+    console.log(fs.readFileSync('/sys/devices/virtual/thermal/thermal_zone0/temp'));
+    //wPi.digitalWrite(8, value);
     value = +!value;
 }, 500);
