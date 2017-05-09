@@ -23,7 +23,7 @@ setInterval(function() {
 
 
 
-        if(temp < 43){
+        if(temp <= 43){
             wPi.digitalWrite(9, 1);
             wPi.digitalWrite(8, 1);
         } else if(temp >= 60 && temp < 63){
