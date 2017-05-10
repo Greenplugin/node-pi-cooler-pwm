@@ -24,7 +24,7 @@ wPi.digitalWrite(9, 0);
 value = 0;
 
 wss.on('connection', function connection(ws) {
-    console.log('incoming connection %d', ws.id);
+    console.log('incoming connection %s', ws.address);
     ws.on('message', function incoming(message) {
         //console.log('received: %s', message);
         if(message === 'get_temp'){
