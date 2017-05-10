@@ -5,9 +5,7 @@ let wPi = require('wiring-op');
 let fs = require('fs');
 
 let webs = require('ws');
-
-let os = require('os-utils');
-
+let os = require('os');
 
 const wss = new webs.Server({
     perMessageDeflate: false,
@@ -33,10 +31,7 @@ wss.on('connection', function connection(ws) {
         }
 
         if(message === 'get_cpu'){
-           os.cpuUsage(function (result) {
-               ws.send(result);
-               ws.send(os.cpuCount());
-           });
+            ws.send(os.cpus().toString());
         }
 
         if(message === 'get_total_mem'){
