@@ -5,7 +5,9 @@ let wPi = require('wiring-op');
 let fs = require('fs');
 
 let webs = require('ws');
-let os = require('os');
+
+let os = require('os-utils');
+
 
 const wss = new webs.Server({
     perMessageDeflate: false,
@@ -31,15 +33,21 @@ wss.on('connection', function connection(ws) {
         }
 
         if(message === 'get_cpu'){
-            ws.send(os.cpus().toString());
+           os.cpuUsage(function (result) {
+               ws.send(result);
+            });
         }
 
         if(message === 'get_total_mem'){
-            ws.send(os.totalmem());
+           os.totalmem(function (result) {
+               ws.send(result);
+           });
         }
 
         if(message === 'get_free_mem'){
-            ws.send(os.freemem());
+            os.freemem(function (result) {
+                ws.send(result);
+            });
         }
 
     });
