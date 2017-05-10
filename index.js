@@ -35,19 +35,16 @@ wss.on('connection', function connection(ws) {
         if(message === 'get_cpu'){
            os.cpuUsage(function (result) {
                ws.send(result);
-            });
-        }
-
-        if(message === 'get_total_mem'){
-           os.totalmem(function (result) {
-               ws.send(result);
+               ws.send(os.cpuCount());
            });
         }
 
+        if(message === 'get_total_mem'){
+            ws.send(os.totalmem());
+        }
+
         if(message === 'get_free_mem'){
-            os.freemem(function (result) {
-                ws.send(result);
-            });
+            ws.send(os.freemem());
         }
 
     });
