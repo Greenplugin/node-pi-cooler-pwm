@@ -35,12 +35,8 @@ wss.on('connection', function connection(ws) {
             ws.send(JSON.stringify(os.cpus()));
         }
 
-        if(message === 'get_total_mem'){
-            ws.send(os.totalmem());
-        }
-
-        if(message === 'get_free_mem'){
-            ws.send(os.freemem());
+        if(message === 'get_avg'){
+            ws.send(JSON.stringify(os.loadavg()));
         }
 
     });
