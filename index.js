@@ -4,9 +4,9 @@
 let wPi = require('wiring-op');
 let fs = require('fs');
 
-let ws = require('ws');
+let webs = require('ws');
 
-const wss = new ws.Server({
+const wss = new webs.Server({
     perMessageDeflate: false,
     port: 3000
 });
@@ -24,8 +24,11 @@ value = 0;
 
 wss.on('connection', function connection(ws) {
     ws.on('message', function incoming(message) {
-        console.log('received: %s', message);
-        ws.send(temp);
+        //console.log('received: %s', message);
+        if(message.toString() === 'get_temp'){
+            ws.send(temp);
+        }
+
     });
 });
 
