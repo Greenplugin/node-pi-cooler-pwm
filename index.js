@@ -31,7 +31,7 @@ wss.on('connection', function connection(ws) {
         }
 
         if(message === 'get_cpu'){
-            ws.send(os.cpus().toString());
+            ws.send(JSON.stringify(os.cpus()));
         }
 
         if(message === 'get_total_mem'){
