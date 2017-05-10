@@ -5,6 +5,7 @@ let wPi = require('wiring-op');
 let fs = require('fs');
 
 let webs = require('ws');
+let os = require('os');
 
 const wss = new webs.Server({
     perMessageDeflate: false,
@@ -27,6 +28,18 @@ wss.on('connection', function connection(ws) {
         //console.log('received: %s', message);
         if(message === 'get_temp'){
             ws.send(temp);
+        }
+
+        if(message === 'get_cpu'){
+            ws.send(os.cpus());
+        }
+
+        if(message === 'get_total_mem'){
+            ws.send(os.totalmem());
+        }
+
+        if(message === 'get_free_mem'){
+            ws.send(os.freemem());
         }
 
     });
