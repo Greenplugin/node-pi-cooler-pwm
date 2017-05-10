@@ -4,6 +4,15 @@
 let wPi = require('wiring-op');
 let fs = require('fs');
 
+let ws = require('ws');
+
+const wss = new ws.Server({
+    perMessageDeflate: false,
+    port: 8080
+});
+
+let temp;
+
 wPi.setup('wpi');
 
 wPi.pinMode(8, wPi.OUTPUT);
@@ -13,13 +22,21 @@ wPi.digitalWrite(9, 0);
 
 value = 0;
 
+wss.on('connection', function connection(ws) {
+    ws.on('message', function incoming(message) {
+        console.log('received: %s', message);
+        ws.send(temp);
+    });
+});
+
 setInterval(function() {
     fs.readFile('/sys/devices/virtual/thermal/thermal_zone0/temp', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
-        let temp = Number(data);
-        console.log(temp);
+
+        temp = Number(data);
+        //console.log(temp);
 
 
 

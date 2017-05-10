@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wiring-op": "git+https://github.com/Antownee/node-wiring-op.git"
+    "wiring-op": "git+https://github.com/Antownee/node-wiring-op.git",
+    "ws": "^2.3.1"
   }
 }
