@@ -72,4 +72,4 @@ setInterval(function() {
 
 }, 1000);
 
-console.info('app ready. listen 3000 service port');
+console.log('app ready. listen 3000 service port');
